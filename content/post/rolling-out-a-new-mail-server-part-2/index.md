@@ -23,7 +23,9 @@ So the obvious place to start is in setting up the EC2 instance. If you just wan
 
 As I have an Ubuntu Precise (12.04.1 LTS) system already I installed the [cloud-utils](https://packages.ubuntu.com/cloud-utils) package and used the ubuntu-cloudimg-query tool to find the current AMI. For a t1.mirco instance you need an EBS backed AMI so you can find the current using:
 
-> /usr/bin/ubuntu-cloudimg-query precise amd64 ebs us-east-1
+{{< highlight bash >}}
+  $ /usr/bin/ubuntu-cloudimg-query precise amd64 ebs us-east-1
+{{< /highlight >}}
 
 With the AMI value you can then fire off the EC2 instance using either the CLI tools if you have them installed or the [AWS console](https://console.aws.amazon.com/ec2/home/). Be sure when you start it up that you specify the SSH key name or you won't be able to log into the instance once it's started.  With the Ubuntu AMI you'll not be able to login directly as **root** so you'll have to log in as **ubuntu** and then `sudo -i` to gain root access. You'll want to setup a security group with the proper inbound ports opened up. For now you'll need at least the SSH port open to access the EC2 instance. For testing you can restrict to your own IP but for regular operations you'll need to allow from any IP address (0.0.0.0/0). You'll need to allow SMTP (25/tcp) and I include 587/tcp for the mail submission port. You'll also need to allow IMAP (143/tcp) & POP3 (110/tcp), you can also IMAPS (993/tcp) & POP3S (995/tcp) for TLS even though the other ports will support STARTTLS.
 

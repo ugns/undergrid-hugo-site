@@ -3,7 +3,7 @@ title: Getting started with Amazon Web Services
 featured_image: images/professional-solutions.jpg
 type: post
 author: jtbouse
-date: "2018-08-06T23:14:38Z"
+date: "2018-08-13T23:14:38Z"
 tags:
 - amazon
 - aws
@@ -19,6 +19,8 @@ Many VPC setups will go with a 3-tier solution, one that provides a `Public` tie
 For simplicity sake I decided to work with a 2-tier solution and forego the `Data` tier but have left room to expand and add that tier at a later date. I also opted to go with 3 AZs. While some most regions have at least 3 AZs and some even have as many as 6, going with 3 ensured that my [CloudFormation](https://aws.amazon.com/cloudformation/) template would be able to function in any region I picked. I went with a /16 CIDR block under the available 10-net [RFC1918](https://tools.ietf.org/html/rfc1918) private IP space. For each of my 6 subnets then I decided to make use of a /20 CIDR blocks which provides for 4094 IP addresses in each which would be more than enough for my usage. You may find an online subnet calculator handy when making this decision if it's not something you're particularly strong at. For my uses you can see the results [here](http://www.davidc.net/sites/default/subnets/subnets.html?network=10.10.0.0&mask=16&division=15.f460) using one such calculator. In another post I'll cover how to make use of the CloudFormation Fn::Cidr function to simplify this even further in your templates.
 
 So for my 3-tier VPC template I kept it simple with only 2 parameters. The first to pick the Class-B second octet of the VPC /16 CIDR block and the second to decide if the VPC would be dual-stacked and support IPv6 addresses within. Below you will find the template I used so it can be referenced to as we go deeper. You can also find it on [GitHub](https://github.com/UGNS/aws-infra/blob/master/vpc/vpc-3azs.yaml) in my aws-infra repository.
+
+{{< gist jbouse f4d93d19e1ff6e0701aa7b8d35a3897b "vpc-3azs.yaml" >}}
 
 As an astute observer you may have noticed looking through the template that while there is an InternetGateway resource created on line 54 it is only used in the template as a property of the VPCGatewayAttachment on line 65 and then again as the GatewayId for the `Public` routetables on lines 247, 255 & 263. This leaves the `Private` subnets with no default route when this template is completed. This is because you have 2 options available to you. The first of which is to setup a NAT Gateway in each AZ that would be placed in the `Public` subnet and then serve as the default route for the AZs `Private` subnet. The second of which is to setup a VPC VPN Connection and route all `Private` subnets out it as the default route. I went with the second option as the cost of a single VPN Connection worked out to just under 38 USD/month while each NAT Gateway would work out to around 34 USD/month or in my case over 100 USD/month with 3 AZs. You could run only 1 NAT GW and route all 3 AZs out it but if you had an AZ outage you could potentially lose all external connectivity for your `Private` tier. I do have my VPN Connection configured via a CloudFormation template which can be found in the GitHub repo that I will discuss deeper in another post at a later date.
 
