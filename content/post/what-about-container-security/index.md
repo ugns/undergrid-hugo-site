@@ -1,5 +1,6 @@
 ---
 title: What about container security?
+featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
 date: "2018-08-27T13:47:39Z"

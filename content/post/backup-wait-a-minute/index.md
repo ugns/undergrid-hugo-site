@@ -1,5 +1,6 @@
 ---
 title: Backup, wait a minute...
+featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
 date: "2018-08-13T18:53:05Z"
@@ -27,11 +28,11 @@ Another new change to the template starts down on line 803 where we setup the Ne
 
 So the final detail to cover is the Fn::Cidr function itself. This helpful function takes 3 parameters and returns back a list of CIDR blocks which is why I use the Fn::Select to pick which block to select. The first parameter is the CIDR block to split up, so for our use case the VPC CIDR. The second parameter is a count of how many CIDR blocks we want returned, for this I wanted 12 as that would be the max needed for 3 tiers with 4 AZs. The last parameter is the CIDR bits for subnets subtracting the number of bits you want from either 32 for IPv4 or 128 for IPv6, so we're using a /16 IPv4 CIDR for the VPC and we want the subnets to be /20 we needed 12 CIDR bits and we needed /64 subnets for IPv6 we needed 64 CIDR bits for those. We then use the first 4 (0-3) blocks returned for the Public  subnets which fall under a contiguous /18 subnet themselves for the tier. The next 4 (3-7) blocks get assigned to the Private subnets and the last 4 (8-11) block get assigned to the Data subnets.
 
-[{{< img src="vpc-2tier-subnetting.png" alt="Demo VPC Design" sizes="(min-width: 35em) 600px, 100vw" >}}](http://www.davidc.net/sites/default/subnets/subnets.html?network=10.0.0.0&mask=16&division=17.f4620)
+[{{< img src="images/vpc-2tier-subnetting.png" alt="Demo VPC Design" sizes="(min-width: 1693px) 40vw, 1693px" >}}](http://www.davidc.net/sites/default/subnets/subnets.html?network=10.0.0.0&mask=16&division=17.f4620)
 
 The subnetting is perhaps easier to see visually using a handy website I've found online. Looking at the image to the right you see the subnet layout for the 2-tier template using the default CIDR block which only has the Public and Private tiers so we only need to divide it into 8 /20 subnets.
 
-[{{< img src="vpc-3tier-subnetting.png" alt="Demo VPC Design" sizes="(min-width: 35em) 600px, 100vw" >}}](http://www.davidc.net/sites/default/subnets/subnets.html?network=10.0.0.0&mask=16&division=25.f462720)
+[{{< img src="images/vpc-3tier-subnetting.png" alt="Demo VPC Design" sizes="(min-width: 1695px) 40vw, 1695px" >}}](http://www.davidc.net/sites/default/subnets/subnets.html?network=10.0.0.0&mask=16&division=25.f462720)
 
 The image on the left then shows the subnet layout for the 12 /20 subnets needed for the 3-tier solution. Using a visual tool to assist with dividing out the subnets can be very handy, but as you could see from the template itself we don't need to code the actual subnets themselves and instead let the Fn::Cidr function do the work for us. You could mix and match your subnet CIDR sizes if you wanted as they don't all have to be the same size. You would then just need to modify the last two parameters to the Fn::Cidr function to reflect how many subnets you needed to be generated of that size and how many bits for subnetting. You might also then need to change the index for the Fn::Select to get the right block if you needed to skip some.
 

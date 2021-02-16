@@ -3,9 +3,9 @@ languageCode = "en-us"
 title = "UnderGrid Network Services"
 theme = "bootstrap-bp"
 
-author = "Jeremy T. Bouse"
+# author = "Jeremy T. Bouse"
 copyright = "Jeremy T. Bouse"
-# googleAnalytics = "UA-123-45"
+# googleAnalytics = "UA-2819624-1"
 enableRobotsTXT = true
 pygmentsCodeFences = true
 canonifyurls = true
@@ -26,7 +26,7 @@ paginate = 3
 
 [params]
   description = "Your fresh alternative for your IT consulting!"
-  # images = ["logo.jpg"]
+  images = ["logo.png"]
   showPostSummary = true
   startPageColumns = true
   # showListsGrouped = true

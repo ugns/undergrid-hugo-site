@@ -1,5 +1,6 @@
 ---
 title: Ruby on Rails hosting by Web.com
+featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
 date: "2010-02-07T20:52:42Z"

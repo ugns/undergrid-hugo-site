@@ -1,5 +1,6 @@
 ---
 title: Working with ECS
+featured_image: images/professional-solutions.jpg
 type: post
 author: jtbouse
 date: "2018-08-22T01:18:40Z"

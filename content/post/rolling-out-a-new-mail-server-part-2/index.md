@@ -1,5 +1,6 @@
 ---
 title: Rolling out a new mail server - part 2
+featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: "2012-09-21T23:33:23Z"
@@ -14,7 +15,7 @@ tags:
 categories:
 - Projects
 series:
-- Getting Started
+- New Mail Server
 ---
 If you're not going to try running this under AWS then you can pretty much skip on ahead to the rest of the configuration.
 

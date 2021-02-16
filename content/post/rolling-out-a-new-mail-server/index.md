@@ -1,5 +1,6 @@
 ---
 title: Rolling out a new mail server
+featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: "2012-09-21T12:00:59Z"
@@ -26,7 +27,7 @@ tags:
 categories:
 - Projects
 series:
-- Getting Started
+- New Mail Server
 ---
 So for the past few years I've been content to outsource my email services to [Web.com](https://web.com) with very few problems though lately I've had a few contacts report problems sending me email and I've ran into issues where they don't implement certain features I prefer to use (most notably user+extension email addressing). With that in mind I've set out to setup and re-implement my own mail server management and to 'eat my own dog food' as a consultant specializing in cloud service management I thought implementing it within [Amazon Web Services](https://aws.amazon.com). My experience with AWS has proven that I could make the migration and also save expenses which is never a bad thing.
 
