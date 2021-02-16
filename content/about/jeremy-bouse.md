@@ -1,5 +1,6 @@
 ---
 title: 'Jeremy T. Bouse'
+featured_image: images/jeremy-bouse-pic.jpg
 date: 2011-01-28T23:37:23-05:00
 author: jtbouse
 layout: page
