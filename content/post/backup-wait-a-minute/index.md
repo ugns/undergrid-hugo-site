@@ -1,5 +1,6 @@
 ---
 title: Backup, wait a minute...
+slug: backup-wait-a-minute
 featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
