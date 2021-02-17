@@ -1,34 +1,33 @@
 {{/* get file that matches the filename as specified as src="" in shortcode */}}
-{{ $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+{{- $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) -}}
 
 {{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
 
-{{ $tinyw := default "75x" }}
-{{ $smallw := default "300x" }}
-{{ $mediumw := default "768x" }}
-{{ $largew := default "1024x" }}
+{{- $tinyw := default "75x" -}}
+{{- $smallw := default "300x" -}}
+{{- $mediumw := default "768x" -}}
+{{- $largew := default "1024x" -}}
 
 {{/* resize the src image to the given sizes */}}
 
-{{ .Scratch.Set "tiny" ($src.Resize $tinyw) }}
-{{ .Scratch.Set "small" ($src.Resize $smallw) }}
-{{ .Scratch.Set "medium" ($src.Resize $mediumw) }}
-{{ .Scratch.Set "large" ($src.Resize $largew) }}
+{{- .Scratch.Set "tiny" ($src.Resize $tinyw) -}}
+{{- .Scratch.Set "small" ($src.Resize $smallw) -}}
+{{- .Scratch.Set "medium" ($src.Resize $mediumw) -}}
+{{- .Scratch.Set "large" ($src.Resize $largew) -}}
 
 {{/* add the processed images to the scratch */}}
 
-{{ $tiny := .Scratch.Get "tiny" }}
-{{ $small := .Scratch.Get "small" }}
-{{ $medium := .Scratch.Get "medium" }}
-{{ $large := .Scratch.Get "large" }}
+{{- $tiny := .Scratch.Get "tiny" -}}
+{{- $small := .Scratch.Get "small" -}}
+{{- $medium := .Scratch.Get "medium" -}}
+{{- $large := .Scratch.Get "large" -}}
 
-<img {{ with .Get "class" }} class="{{.}}"{{ end }}
-  {{ with .Get "sizes" }}sizes='{{.}}'{{ else }}sizes="(max-width: 300px) 100vw, 300px"{{ end }}
+<img {{ with .Get "class" }}class="{{.}}"{{ end -}}
+  {{- with .Get "sizes" }} sizes='{{.}}' {{ else }} sizes="(max-width: 300px) 100vw, 300px" {{ end -}}
   srcset="
-    {{ with $src.RelPermalink }}{{.}} {{ $src.Width }}w,{{ end }}
-    {{ with $large.RelPermalink }}{{.}} {{ $large.Width }}w,{{ end }}
-    {{ with $medium.RelPermalink }}{{.}} {{ $medium.Width }}w,{{ end }}
-    {{ with $small.RelPermalink }}{{.}} {{ $small.Width }}w,{{ end }}
-    {{ with $tiny.RelPermalink }}{{.}} {{ $tiny.Width }}w{{ end }}"
-  src="{{ $src.RelPermalink }}"
-  {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }} />
+    {{- with $src.RelPermalink }}{{.}} {{ $src.Width }}w,{{ end -}}
+    {{- with $large.RelPermalink }}{{.}} {{ $large.Width }}w,{{ end -}}
+    {{- with $medium.RelPermalink }}{{.}} {{ $medium.Width }}w,{{ end -}}
+    {{- with $small.RelPermalink }}{{.}} {{ $small.Width }}w,{{ end -}}
+    {{- with $tiny.RelPermalink }}{{.}} {{ $tiny.Width }}w{{ end -}}" src="{{ $src.RelPermalink }}"
+  {{- with .Get "alt" }} alt="{{.}}"{{ else }}alt=""{{ end }} />
