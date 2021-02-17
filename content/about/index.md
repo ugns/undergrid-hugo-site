@@ -11,4 +11,4 @@ No project is too big or too small as we leverage the resources of a network of 
 
 We always look forward to getting the opportunity to earn your trust and your business so feel free to contact us to discuss how we can help your company focus on its core business and let us handle your IT services.
 
-{{< img src="images/AWS-Certifications.png" alt="AWS Certificatrions" sizes="(max-width: 1268px) 40vw, 507px" >}}
+{{< img src="images/AWS-Certifications.png" alt="AWS Certificatrions" >}}
