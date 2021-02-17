@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "UnderGrid Network Services"
 theme = "bootstrap-bp"
 
-# author = "Jeremy T. Bouse"
 copyright = "Jeremy T. Bouse"
 # googleAnalytics = "UA-2819624-1"
 enableRobotsTXT = true
