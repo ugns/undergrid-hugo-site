@@ -10,6 +10,7 @@ enableRobotsTXT = true
 pygmentsCodeFences = true
 canonifyurls = true
 paginate = 3
+enableGitInfo = true
 
 [sitemap]
     changefreq = "weekly"
