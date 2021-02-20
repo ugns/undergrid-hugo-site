@@ -1,4 +1,4 @@
-baseURL = "https://undergrid.services"
+# baseURL = "https://undergrid.services"
 languageCode = "en-us"
 title = "UnderGrid Network Services"
 theme = "bootstrap-bp"
@@ -7,7 +7,7 @@ copyright = "UnderGrid Network Services"
 enableRobotsTXT = true
 enableInlineShortcodes = true
 pygmentsCodeFences = true
-canonifyurls = true
+canonifyurls = false
 paginate = 3
 enableGitInfo = true
 
