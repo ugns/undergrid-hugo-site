@@ -1,0 +1,67 @@
+
+body {
+	background-color: #C2C2C2;
+}
+
+.wrapper {
+	position: relative;
+	padding-left: 225px;
+}
+
+.chksum {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.chksum a {
+	color: #FFFFFF;
+}
+
+.error {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.warning {
+	background-color: red;
+}
+
+.success {
+	background-color: green;
+}
+
+.footer {
+	text-align: center;
+	font-size: 7;
+}
+
+.policy {
+	height: 500px;
+	overflow: auto;
+	text-align: left;
+	background-color: #FFFFFF;
+	border: 3px solid #7C7C7C;
+}
+
+.policy pre {
+	padding: 5px;
+}
+
+.download {
+	float: left;
+	position: absolute;
+	width: 200px;
+	top: 16px;
+	text-align: left;
+	z-index: 1;
+	background-color: #FFFFFF;
+	border: 2px solid #7C7C7C;
+}
+
+.download h3 {
+	padding: 2px;
+}
+
+.download li {
+	padding: 2px;
+}
