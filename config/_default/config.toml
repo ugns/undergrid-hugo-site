@@ -6,6 +6,7 @@ copyright = "UnderGrid Network Services"
 enableRobotsTXT = true
 enableInlineShortcodes = true
 pygmentsCodeFences = true
+pygmentsUseClasses = true
 canonifyurls = false
 paginate = 3
 enableGitInfo = true
