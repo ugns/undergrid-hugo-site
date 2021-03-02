@@ -1,0 +1,38 @@
+languageCode = "en-us"
+title = "UnderGrid Network Services"
+theme = "bootstrap-bp"
+
+copyright = "UnderGrid Network Services"
+enableRobotsTXT = true
+enableInlineShortcodes = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+canonifyurls = false
+paginate = 3
+enableGitInfo = true
+
+[sitemap]
+    changefreq = "weekly"
+    priority = 0.5
+
+[permalinks]
+    posts = "/:year/:month/:slug/"
+    post = "/:year/:month/:slug/"
+    pages = "/:slug/"
+    page = "/:slug/"
+
+[Author]  
+  name = "Jeremy T. Bouse"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[services]
+
+  [services.instagram]
+    disableInlineCSS = true
+
+  [services.twitter]
+    disableInlineCSS = true

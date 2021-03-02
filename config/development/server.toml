@@ -1,0 +1,11 @@
+[[headers]]
+  for = "/**"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; connect-src ws://localhost:1313; font-src 'self'; img-src 'self' data:; script-src 'self' gist.github.com/jbouse/; style-src 'self' github.githubassets.com/assets/; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'strict-dynamic';"
+    Referrer-Policy = "origin-when-cross-origin, strict-origin-when-cross-origin"
+    Cross-Origin-Embedder-Policy = "require-corp;"
+    Cross-Origin-Opener-Policy-Report-Only = "same-origin;"
+    Cross-Origin-Resource-Policy = "cross-region;"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"

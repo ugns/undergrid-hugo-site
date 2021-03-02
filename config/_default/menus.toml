@@ -1,0 +1,34 @@
+[[main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 10
+pre = "<i class='fas fa-heart'></i>"
+
+[[main]]
+identifier = "blog"
+name = "Posts"
+url = "/post/"
+weight = 10
+pre = "<i class='fas fa-blog'></i>"
+
+[[footer]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 10
+pre = "<i class='fas fa-address-card'></i>"
+
+[[footer]]
+identifier = "categories"
+name = "Categories"
+url = "/categories/"
+weight = 20
+pre = "<i class='fas fa-folder'></i>"
+
+[[footer]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 30
+pre = "<i class='fas fa-tags'></i>"
