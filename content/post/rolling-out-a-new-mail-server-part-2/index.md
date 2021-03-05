@@ -1,6 +1,5 @@
 ---
 title: Rolling out a new mail server - part 2
-featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: "2012-09-21T23:33:23Z"

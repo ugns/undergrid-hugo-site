@@ -1,6 +1,5 @@
 ---
 title: Starting Over Again but Not Completely
-featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: 2021-02-19T05:27:29.000Z

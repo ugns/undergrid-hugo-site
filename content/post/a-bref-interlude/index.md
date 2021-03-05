@@ -1,6 +1,5 @@
 ---
 title: A Bref Interlude
-featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
 date: 2021-02-27T00:10:25.000Z

@@ -1,6 +1,5 @@
 ---
 title: 'About Us'
-featured_image: images/whiteboard.jpg
 date: 2011-01-28T16:27:45-05:00
 author: jtbouse
 layout: page

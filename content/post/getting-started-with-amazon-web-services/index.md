@@ -1,6 +1,5 @@
 ---
 title: Getting started with Amazon Web Services
-featured_image: images/professional-solutions.jpg
 type: post
 author: jtbouse
 date: "2018-08-13T23:14:38Z"

@@ -1,7 +1,6 @@
 ---
 title: Backup, wait a minute...
 slug: backup-wait-a-minute
-featured_image: images/solution-problem.jpg
 type: post
 author: jtbouse
 date: "2018-08-13T18:53:05Z"

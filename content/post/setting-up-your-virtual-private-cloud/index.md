@@ -1,6 +1,5 @@
 ---
 title: Setting up your Virtual Private Cloud
-featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: "2018-08-21T00:47:36Z"

@@ -1,6 +1,5 @@
 ---
 title: GnuPG Key Policy Manager
-featured_image: images/professional-solutions.jpg
 type: post
 author: jtbouse
 date: "2008-07-12T18:29:30Z"

@@ -1,6 +1,5 @@
 ---
 title: Standardizing the Zone
-featured_image: images/professional-solutions.jpg
 type: post
 author: jtbouse
 date: 2021-02-23T01:27:57.000Z
