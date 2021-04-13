@@ -6,7 +6,7 @@ date: 2021-02-27T00:10:25.000Z
 publishdate: 2021-02-26T00:00:00.000Z
 draft: false
 summary: |
-    I'll taka a brief break from the direct AWS infrastructure and discuss
+    I'll take a brief break from the direct AWS infrastructure and discuss
     another piece of the puzzle I needed to address while moving all of my
     website to operate within a more serverless capacity.
     I had my GNU Privacy Guard Key Policy site I'd developed back in '08
