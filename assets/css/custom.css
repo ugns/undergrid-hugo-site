@@ -5,6 +5,7 @@
 .alignleft {
     display: inline;
     float: left;
+    clear: right;
     margin-right: 1.5em;
     margin-bottom: 0;
 }
@@ -12,6 +13,7 @@
 .alignright {
     display: inline;
     float: right;
+    clear: left;
     margin-left: 1.5em;
     margin-bottom: 0;
 }

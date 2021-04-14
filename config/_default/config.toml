@@ -36,3 +36,9 @@ series = "series"
 
   [services.twitter]
     disableInlineCSS = true
+
+[markup]
+  [markup.highlight]
+    anchoreLineNos = true
+    lineNos = true
+    codeFences = true
