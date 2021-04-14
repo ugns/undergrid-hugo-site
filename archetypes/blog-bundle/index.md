@@ -1,6 +1,5 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-featured_image: images/technology.jpg
 type: post
 author: jtbouse
 date: {{ .Date }}
