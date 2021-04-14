@@ -1,10 +1,10 @@
 ---
-title: "It's Just a Matter of Time"
+title: It's Just a Matter of Time
 type: post
 author: jtbouse
-date: 2021-04-12T22:12:02-04:00
-publishdate: 2021-04-12
-draft: true
+date: 2021-04-13T02:12:02.000Z
+publishdate: 2021-04-12T00:00:00.000Z
+draft: false
 summary: |
     After several years of faithful service, I decided to take another shot at
     my stratum-1 NTP time server running off a Raspberry Pi 2 that I had originally
@@ -18,7 +18,7 @@ tags:
     - raspberry pi
 categories:
     - Projects
-slut: matter-of-time
+slug: matter-time
 ---
 
 ## Let's go back in time
