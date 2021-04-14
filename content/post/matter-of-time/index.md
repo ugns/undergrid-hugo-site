@@ -102,9 +102,11 @@ Once the Raspberry Pi has bootstrapped and is running the first thing you want t
 `/boot/config.txt`. You want to comment out the line to disable `audio` as shown below on line 57. 
 Next you want to add the dtoverlay for `pi3-disable-bt` and `pps-gpio` as shown below on lines 59-60.
 The GPIO used on the Ultimate GPS HAT is Pin 4, this needs to be included as it is not the default 
-for the pps-gpio overlay.
+for the pps-gpio overlay. The `enable_uart=1` on line 61 enables the GPIO serial port to use 
+`/dev/ttyAMA0` (uart) rather than `/dev/ttyS0` (mini uart). The `gpu_mem=0` on line 62 can provide
+some memory optimization leaving more RAM for the system if you are running headless.
 
-{{< highlight ini "linenostart=54,hl_lines=4 6-7" >}}
+{{< highlight ini "linenostart=54,hl_lines=4 6-9" >}}
 # Additional overlays and parameters are documented /boot/overlays/README
 
 # Enable audio (loads snd_bcm2835)
@@ -112,6 +114,8 @@ for the pps-gpio overlay.
 
 dtoverlay=pi3-disable-bt
 dtoverlay=pps-gpio,gpiopin=4
+enable_uart=1
+gpu_mem=0
 
 [pi4]
 # Enable DRM VC4 V3D driver on top of the dispmanx display stack
@@ -124,8 +128,9 @@ max_framebuffers=2
 
 The other system level configuration to make is to edit the `/boot/cmdline.txt` and remove all
 reference to the serial console. This is because the Ultimate GPS HAT will be using the serial
-port to communicate. You will generally see the `/boot/cmdline.txt` will contain something that
-looks similar to the following:
+port to communicate. We also want to tell the kernel to not run tickless to reduce the jitter
+and offset in NTP when using GPS PPS. You will generally see the `/boot/cmdline.txt` will
+contain something that looks similar to the following:
 
 {{< highlight conf >}}
 console=serial0,115200 console=tty1 root=PARTUUID=cead1835-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
@@ -157,11 +162,14 @@ sudo apt upgrade
 sudo apt install pps-tools setserial ntp ntpdate
 {{< /highlight >}}
 
-We also want to help speed up the boot time so let's disable the serial console related services
+We also want to help speed up the boot time so let's disable and mask the serial console related
+systemd service units as they are not needed.
 
 {{< highlight conf >}}
 sudo systemctl disable hciuart
+sudo systemctl mask hciuart
 sudo systemctl disable serial-getty@ttyAMA0.service
+sudo systemctl mask serial-getty@ttyAMA0.service
 {{< /highlight >}}
 
 Another item is to disable the restarting of NTP by the DHCP client. The easist way to perform
@@ -192,7 +200,7 @@ setserial /dev/ttyAMA0 low_latency
 /bin/echo -e '$PMTK301,0*2C\r\n' > /dev/ttyAMA0 # No DGPS source
 /bin/echo -e '$PMTK313,0*2F\r\n' > /dev/ttyAMA0 # disable SBAS satellite
 /bin/echo -e '$PMTK251,115200*1F\r\n' > /dev/ttyAMA0 #set baud to 115200
-stty -F /dev/ttyAMA0 raw 115200 cs8 clocal -cstopb -echo # set serial baud to 115200
+stty -F /dev/ttyAMA0 raw 115200 cs8 clocal -cstopb # set serial baud to 115200
 systemctl start ntp.service
 
 exit 0
@@ -307,7 +315,7 @@ restrict 127.0.0.1
 restrict ::1
 
 # Needed for adding pool entries
-restrict source  limited kodnotrap nomodify noquery
+restrict source limited kod notrap nomodify noquery
 
 # Clients from this (example!) subnet have unlimited access, but only if
 # cryptographically authenticated.
