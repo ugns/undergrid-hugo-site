@@ -8,8 +8,8 @@ draft: false
 summary: |
     After several years of faithful service, I decided to take another shot at
     my stratum-1 NTP time server running off a Raspberry Pi 2 that I had originally
-    built back in late '16 to keep the time on all my servers in sync. That had
-    really been my first Raspbery Pi project and it had several issues that left 
+    built back in late 2016 to keep the time on all my servers in sync. That had
+    really been my first Raspberry Pi project, and it had several issues that left 
     me not 100% satisfied with the results.
 tags:
     - ntp
@@ -24,87 +24,85 @@ slug: matter-time
 ## Let's go back in time
 
 {{< img src="images/20160817_192541.jpg" alt="Original Raspberry Pi NTP build" class="alignleft" >}}
-Back in August of 2016 I had built my original NTP server with a Raspberry Pi 2 that I had purchased
+Back in August of 2016, I had built my original NTP server with a Raspberry Pi 2 that I had purchased
 at my local MicroCenter. I had then ordered the original [Adafruit Ultimate GPS HAT][bom-1] from
-Amazon along with an RF adapter cable that I later determined was the incorrect one I needed and had
-to find a way to work around.
+Amazon, along with an RF adapter cable that I later determined was the incorrect one I needed and had
+to find a way to workaround.
 
 {{< img src="images/20210411_000102.jpg" alt="New Raspberry Pi NTP build" class="alignright" >}}
-This was my first time trying to solder a 2x20 header so it wasn't the best job and I think it may
+This was my first time soldering a 2x20 header, so it was not the best job, and I think it may
 have contributed to some of the performance issues I encountered with the project. There was some
-general instability that would require me to routinely reboot the system to reset the board. The
+general instability that would require me to reboot the system to reset the board routinely. The
 other factor was that the default NTP daemon package available with that version of Raspberry Pi OS,
 called Raspbian at the time but has since been renamed, did not support the GPS NMEA reference clock
 needed to use the Ultimate GPS HAT.
 
-Besides that there wasn't much thought that went into the construction of the build. I used the 
-simple Official Red & White Raspberry Pi case which was not built with the external GPS antenna 
-in mind so I had to just leave the RF adapter cable exit the case between the USB ports. While this
-worked, it was not "pretty" and it provided no support so any tension on the adapter cable went
-directly to the u.FL connector on the Ultimate GPS HAT risking potential damage. I had also made the
-mistake of purchasing an RP-SMA to u.FL cable rather than a [SMA to u.FL cable][bom-3] which required me to
+Besides that, there was not much thought that went into the construction of the build. I used the
+simple Official Red & White Raspberry Pi case that was not designed with the external GPS antenna
+in mind, so I had to let the RF adapter cable exit the case between the USB ports. While this
+worked, it was not "pretty," and it provided no support, so any tension on the adapter cable went
+directly to the u.FL connector on the Ultimate GPS HAT, risking potential damage. I had also made the
+mistake of purchasing an RP-SMA to u.FL cable rather than a [SMA to u.FL cable][bom-3], which required me to
 get an additional RP-SMA to SMA adapter between the Raspberry Pi and the [external GPS antenna][bom-2].
 
-So I wanted to come up with something more purpose built and look more like an appliance ready for 
-future use. I found that [Adafruit][1] had a great enclosure kit that had the holes perfect for the
+So I wanted to come up with something more purpose-built and look more like an appliance ready for future use. I found that [Adafruit][1] had a great enclosure kit that had the holes perfect for the
 RF adapter jack to be secured and looked how I thought an appliance box should. So I started the new
 build project with the purchase of the [enclosure kit][bom-4]. Since I already had the Raspberry Pi
-board and the microSD card I didn't need to purchase those but if not I could have gotten a new
+board and the microSD card, I did not need to purchase those, but if not, I could have gotten a new
 [Raspberry Pi 3][bom-5]. I had been making use of an old phone USB charging adapter to power my
-Raspberry Pi, with the new enclosure I went ahead and purchase a [5V power supply][bom-6] as I had
-began noticing that I was getting under-voltage messages in the logs.
+Raspberry Pi, with the new enclosure, I went ahead and purchased a [5V power supply][bom-6] as I had
+begun noticing that I was getting under-voltage messages in the logs.
 
 While I purchased a new [Ultimate GPS HAT][bom-1] due to my displeasure with the solder work and I
 had found that Adafruit now had a [solderless header][bom-8] option with a [jig kit][bom-7]. The
-Ultimate GPS HAT does come with a 2x20 header that requires soldering and the solderless jig kit does
-include a 2x20 solderless header so I got the kit and if I build another box later I can just get the
-header and reuse the jig. The final missing part to polish the finished product was getting a kit of
-[nylon screws and stand-offs][bom-9]. I picked the black nylon stand-offs rather than the white just
-for personal preference and availbility which ensured that the HAT and the Raspberry Pi are securely
+Ultimate GPS HAT does come with a 2x20 header that requires soldering, and the solderless jig kit does
+include a 2x20 solderless header, so I got the kit, and if I build another box later, I can get another
+header and reuse the jig. The final missing part to polish the finished product was getting a 
+[nylon screws and standoffs][bom-9] kit. I picked the black nylon standoffs rather than the white just
+for personal preference and availability, ensuring that the HAT and the Raspberry Pi are securely
 supported more than by the header alone.
 
 ## Putting together the pieces
 
 {{< img src="images/20210410_235419.jpg" alt="Board assembly" class="alignleft" >}}
 The first step in the new build was to take the [Ultimate GPS HAT][bom-1] board and the 2x20
-[solderless header][bom-7] from the kit. Using the installation jig from the kit I secured the
+[solderless header][bom-7] from the kit. Using the installation jig from the kit, I secured the
 header and to the HAT. I then took four 12mm long M-F hex standoffs and 4 M2.5 x 4mm screws from the
-[screw and stand-off kit][bom-9] to assemble the Raspberry Pi and Ultimate GPS HAT together to the
-base plate of the [enclosure kit][bom-4]. With the boards secured to the base plate I just needed to
+[screw and standoff kit][bom-9] to assemble the Raspberry Pi and Ultimate GPS HAT together to the
+base plate of the [enclosure kit][bom-4]. With the boards secured to the base plate, I just needed to
 attach the [RF adapter cable][bom-3] to the u.FL connector on the HAT to complete the assembly.
 
 {{< img src="images/20210410_235912.jpg" alt="Enclosure assembly" class="alignright" >}}
-The enclosure then just slides over the base plate assembly and the RF adapter cable jack secured
-through the top left hole. The enclosure kit includes several rubber plugs to fill the other 3 holes
-that were not going to be used to help keep dust out of the enclosure. Securing the top of the case
-on the enclosure completes the build. With the hardware fully assembled it was time to move on to
+The enclosure then slides over the base plate assembly and the RF adapter cable jack is secured
+through the top left hole. The enclosure kit includes several rubber plugs to fill the other three holes
+that were not used to help keep dust out of the enclosure. Securing the top of the case
+on the enclosure completes the build. With the hardware fully assembled, it was time to move on to
 the software phase of the build.
 
 The first step in the software phase was to install the [Raspberry Pi OS][2] on the microSD card. 
-The easiest way to perform this is with the Raspberry Pi Imager application which will automatically
-download the image and write it to the microSD card then verify it. The new version 1.6 has recently
-added an advanced configuration option available by hitting CTRL+Shift+X which allows you to set
-the hostname, password, enable SSH and configure WiFi to assist in being able to bring the Raspberry
+The easiest way to perform this is with the Raspberry Pi Imager application, which will automatically
+download the image and write it to the microSD card, then verify it. The new version 1.6 has recently
+added an advanced configuration option available by hitting CTRL+Shift+X, which allows you to set
+the hostname, password, enable SSH, and configure wifi to assist in being able to bring the Raspberry
 Pi online and ready to be configured remotely without having to have a monitor and keyboard.
 
 ## Ready for some Pi?
 
-So there are plenty of Raspberry Pi install guides out there so I won't go deep into how to perform
-the initial install. You do need to be able to access the command line so if you do not enable SSH
-before bootstrapping then you will need a monitor and keyboard to perform the initial installation.
-It really does not matter if you use wifi or ethernet, though an ethernet connection will most likely
+So there are plenty of Raspberry Pi install guides out there, so I will not go deep into how to perform
+the initial install. You need to be able to access the command line, so if you do not enable SSH
+before bootstrapping, you will need a monitor and keyboard to perform the initial installation.
+It does not matter if you use wifi or ethernet, though an ethernet connection will most likely
 be a more stable connection. As for the Raspberry Pi OS, I choose to use the `Raspberry Pi Lite`
-over the Raspberry Pi Full or Desktop. The reasoning for this was simply to install the smallest
-footprint possible from a security standpoint and just not wanting to install unnecessary desktop
+over the Raspberry Pi Full or Desktop. The reasoning for this was to install the smallest
+footprint possible from a security standpoint and just not want to install an unnecessary desktop
 environment.
 
-Once the Raspberry Pi has bootstrapped and is running the first thing you want to do is edit the
+Once the Raspberry Pi has bootstrapped and is running, the first thing you want to do is edit the
 `/boot/config.txt`. You want to comment out the line to disable `audio` as shown below on line 57. 
 Next you want to add the dtoverlay for `pi3-disable-bt` and `pps-gpio` as shown below on lines 59-60.
-The GPIO used on the Ultimate GPS HAT is Pin 4, this needs to be included as it is not the default 
-for the pps-gpio overlay. The `enable_uart=1` on line 61 enables the GPIO serial port to use 
+The GPIO used on the Ultimate GPS HAT is Pin 4; this needs to be included as it is not the default for the pps-gpio overlay. The `enable_uart=1` on line 61 enables the GPIO serial port to use 
 `/dev/ttyAMA0` (uart) rather than `/dev/ttyS0` (mini uart). The `gpu_mem=0` on line 62 can provide
-some memory optimization leaving more RAM for the system if you are running headless.
+some memory optimization leaving more RAM for the system if you run headless.
 
 {{< highlight ini "linenostart=54,hl_lines=4 6-9" >}}
 # Additional overlays and parameters are documented /boot/overlays/README
@@ -126,9 +124,9 @@ max_framebuffers=2
 #dtoverlay=vc4-fkms-v3d
 {{< /highlight >}}
 
-The other system level configuration to make is to edit the `/boot/cmdline.txt` and remove all
-reference to the serial console. This is because the Ultimate GPS HAT will be using the serial
-port to communicate. We also want to tell the kernel to not run tickless to reduce the jitter
+The other system-level configuration is to edit the `/boot/cmdline.txt` and remove all
+references to the serial console. This is because the Ultimate GPS HAT will be using the serial
+port to communicate. We also want to tell the kernel not to run tickless to reduce the jitter
 and offset in NTP when using GPS PPS. You will generally see the `/boot/cmdline.txt` will
 contain something that looks similar to the following:
 
@@ -136,7 +134,7 @@ contain something that looks similar to the following:
 console=serial0,115200 console=tty1 root=PARTUUID=cead1835-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
 {{< /highlight >}}
 
-Which I then editted to look similar to:
+Which I then edited to look similar to:
 
 {{< highlight conf >}}
 console=tty1 root=PARTUUID=cead1835-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait plymouth.ignore-serial-consoles nhoz=off
@@ -145,16 +143,16 @@ console=tty1 root=PARTUUID=cead1835-02 rootfstype=ext4 elevator=deadline fsck.re
 {{< img src="images/ntp-gps-udev-rules.png" alt="GPS udev rules" class="alignleft" >}}
 
 The next thing to get in place is the udev rule to set up the symlinks for our GPS device. Using
-your favorite editor you can create the `/etc/udev/rules.d/99-gps.rules` file with the following:
+your favorite editor, you can create the `/etc/udev/rules.d/99-gps.rules` file with the following:
 
 {{< highlight shell >}}
 KERNEL=="pps0", SYMLINK+="gpspps0"
-KERNEL=="ttyAMA0", SUBSYSTEM=="tty", MODE=="0777", SYMLINK+="gps0"
+KERNEL=="ttyAMA0", SUBSYSTEM=="tty", MODE="0777", SYMLINK+="gps0"
 {{< /highlight >}}
 
-Now we can move to installing the actual software. Thankfully this is all available through the
+Now we can move to install the actual software. Thankfully this is all available through the
 software repository and able to use `apt` to install it. It is generally a good idea to make sure
-you have everything up to date as well so here are the commands I executed:
+you have everything up to date as well, so here are the commands I executed:
 
 {{< highlight conf >}}
 sudo apt update
@@ -162,7 +160,7 @@ sudo apt upgrade
 sudo apt install pps-tools setserial ntp ntpdate
 {{< /highlight >}}
 
-We also want to help speed up the boot time so let's disable and mask the serial console related
+We also want to help speed up the boot time so let us disable and mask the serial console related
 systemd service units as they are not needed.
 
 {{< highlight conf >}}
@@ -183,8 +181,8 @@ sudo rm /lib/dhcpcd/dhcpcd-hooks/50-ntp.conf
 
 {{< img src="images/ntp-gps-rc-local.png" alt="GPS udev rules" class="alignright" >}}
 
-The last piece we want to setup is performing the initial serial communication settings with the
-GPS so we'll open up the `/etc/rc.local` in our editor and add the highlight lines 20-28.
+The last piece we want to set up is performing the initial serial communication settings with the
+GPS, so we will open up the `/etc/rc.local` in our editor and add the highlight lines 20-28.
 
 {{< highlight shell "linenostart=14,hl_lines=7-15" >}}
 # Print the IP address
@@ -206,15 +204,15 @@ systemctl start ntp.service
 exit 0
 {{< /highlight >}}
 
-At this point it is a good idea to give your Raspberry Pi a reboot to enable it to start up with
-this configuration in place. We don't yet have NTP configured to use the GPS input but restarting
-now will bring everything up with the hardware configured and we should be ready to configure NTP.
+At this point, it is a good idea to give your Raspberry Pi a reboot to enable it to start up with
+this configuration in place. We do not yet have NTP configured to use the GPS input, but restarting
+now will bring everything up with the hardware configured, and we should be ready to configure NTP.
 
 ## The time is nigh
 
-When our Raspberry Pi has come back online after being restarted and we have connected back to
-it, either via monitor and keyboard or over SSH, we will want to confirm things are in fact working.
-The first is to make sure that PPS device is responding, we will do this using the `ppstest` utility
+When our Raspberry Pi has come back online after being restarted, and we have connected back to
+it, either via monitor and keyboard or over SSH, we will want to confirm that things are working.
+The first is to make sure that the PPS device is responding. We will do this using the `ppstest` utility
 we installed earlier.
 
 {{< highlight bash "linenos=false" >}}
@@ -228,11 +226,11 @@ source 0 - assert 1618365984.999994148, sequence: 2339 - clear  0.000000000, seq
 source 0 - assert 1618365985.999993720, sequence: 2340 - clear  0.000000000, sequence: 0
 {{< /highlight >}}
 
-You can hit CTRL+C to cancel this after confirming it works. If you get a `Time out` message then
-your GPS has most likely not locked on to the satellites yet so you need to attempt repositioning
+You can hit CTRL+C to cancel this after confirming it works. If you get a `Time out` message, then
+your GPS has most likely not locked on to the satellites yet, so you need to attempt repositioning
 your antenna to have better access to the sky.
 
-Next we can actually confirm we're getting the GPS data. You can do this very easily using `cat`.
+Next, we can confirm we are getting the GPS data. You can do this very quickly using `cat`.
 
 {{< highlight bash "linenos=false,hl_lines=2 4 6 8" >}}
 pi@raspberrypi:~ $ cat /dev/gps0
@@ -247,26 +245,26 @@ $GPVTG,223.42,T,,M,0.03,N,0.05,K,A*3E
 {{< /highlight >}}
 
 The lines we are looking for most are the `$GPGGA` and `$GPRMC` prefixed ones that I have
-highlighted. The lines are comma-delimited and the `$GPGGA` line will indicate how many
-satellites you are locked onto in the 8th column. In this example we are locked on 11 
-satellites and I typically find my system is locked on anywhere from 6-13 satellites with
-9-11 as an average. If you are curious to understand these lines I found a [great site][3]
-that you can paste the line into and see what it is actually telling you.
+highlighted. The lines are comma-delimited, and the `$GPGGA` line will indicate how many
+satellites you are locked onto in the 8th column. In this example, we are locked on 11 
+satellites, and I typically find my system is locked on anywhere from 6-13 satellites with
+9-11 as an average. If you are curious to understand these lines, I found a [great site][3]
+that you can paste the string into and see what it is telling you.
 
 {{< img src="images/ntp-gps-ntp-conf.png" alt="GPS udev rules" class="alignleft" >}}
 
-If you're getting positive results to this point it is finally time to tie it all together
-and get NTP using this data. At this point by default your NTP server will be running and
-using external NTP pool servers to get peer with.
+If you are getting positive results, it is finally time to tie it all together
+and get NTP using this data. At this point, by default, your NTP server will be running and
+using external NTP pool servers to get peered.
 
-At this point we need to edit the `/etc/ntp.conf` file. Below you will find the configuration
-I have in place and I have highlighted the important lines you will need to modify or add
+At this point, we need to edit the `/etc/ntp.conf` file. Below you will find the configuration
+I have in place, and I have highlighted the essential lines you will need to modify or add
 if missing from your own.
 
-While getting things initially setup you may wish to uncomment line 9 to allow NTP to record
-the statistics. In particular the `clockstats` will be very helpful to confirm that NTP is
-receiving the GPS data. I would however probably turn this off once confident in the setup
-as this would add additional writes to the microSD card which can lower the usefulness of the
+While getting things initially set up you may wish to uncomment line 9 to allow NTP to record
+the statistics. In particular, the `clockstats` will be very helpful to confirm that NTP is
+receiving the GPS data. I would, however, probably turn this off once confident in the setup
+as this would add additional writes to the MicroSD card, which can lower the usefulness of the
 drive and fill up the space if you do not monitor it.
 
 {{< highlight shell "hl_lines=9 46 62-65">}}
@@ -306,7 +304,7 @@ pool 3.debian.pool.ntp.org iburst
 # that might be intended to block requests from certain clients could also end
 # up blocking replies from your own upstream servers.
 
-# By default, exchange time with everybody, but don't allow configuration.
+# By default, exchange time with everybody, but do not allow configuration.
 restrict -4 default kod notrap nomodify nopeer noquery limited
 restrict -6 default kod notrap nomodify nopeer noquery limited
 
@@ -337,25 +335,25 @@ fudge 127.127.20.0 flag1 1 flag4 1 time2 0.350 refid GPS
 tos mindist 0.002
 {{< /highlight >}}
 
-On line 46 I include the `limited kod` options to add more security to the configuration and
+On line 46, I include the `limited kod` options to add more security to the configuration and
 limit the changes that can be made from the peer servers.
 
-Lines 62-63 are where we actually add the GPS as our reference clock source. The `127.127.20.0`
+Lines 62-63 are where we add the GPS as our reference clock source. The `127.127.20.0`
 address is the internal address for the [GPS_NMEA][4] reference clock and will point to the
 /dev/gps0 and /dev/gpspps0 devices from our udev rules. The `mode` we set on line 62 tells NTP
-that we are looking to process `$GPRMC` and `$GPGGA` data lines only and we are communicating
+that we are looking to process `$GPRMC` and `$GPGGA` data lines only, and we are communicating
 at 115200 baud over the serial port. The `flag1` setting on line 63 signals that we want to
-enable PPS signal processing. The `flag4` setting is to obscure the GPS location which would be
-stored in the `clockstats` statistics file and isn't really needed to operate. The `time2` setting
-is the serial EOL offset and seems to be fine for Raspberry Pi serial communications. The `tos`
-command on line 65 is to set the minmimum distance used but the selection and anticlockhop
-algorithm. Setting this to `0.002` is just slightly more than the default of `0.001` which seems
+enable PPS signal processing. The `flag4` setting obscures the GPS location, which would be
+stored in the `clockstats` statistics file and is not needed to operate. The `time2` setting
+is the serial EOL offset and seems fine for Raspberry Pi serial communications. The `tos`
+command on line 65 is to set the minimum distance used but the selection and anticlockhop
+algorithm. Setting this to `0.002` is just slightly more than the default of `0.001`, which seems
 to work excellent with the PPS signal on the Ultimate GPS HAT.
 
 {{< img src="images/ntp-gps-stratum-1.png" alt="GPS udev rules" class="alignright" >}}
 
-With the `ntp.conf` configuration saved you should be ready to restart the NTP service and after
-given a bit of time to stablize you should be able to query the NTP server and see that it is
+With the `ntp.conf` configuration saved, you should be ready to restart the NTP service, and after
+given a bit of time to stabilize you should be able to query the NTP server and see that it is
 using the GPS data.
 
 {{< highlight conf >}}
@@ -363,31 +361,28 @@ sudo systemctl restart ntp.service
 ntpq -crv -pn
 {{< /highlight >}}
 
-If everything is working properly you are expecting to see `refid=GPS` and `stratum=1` in the 
-`ntpq` output. As well you are looking to see an `o` to the left of the `127.127.20.0` peer
-entry with the `delay`, `offset` and `jitter` column values as close to `0.000` as possible.
-This will indicate that your time is stable. A `reach` column value of `377` indicates that 
-there have been no  polling attempt failures.
+If everything is working correctly, you expect to see `refid=GPS` and `stratum=1` in the 
+`ntpq` output. You are also looking to see an `o` to the left of the `127.127.20.0` peer
+entry with the `delay`, `offset`, and `jitter` column values as close to `0.000` as possible.
+This will indicate that your time is stable. A `reach` column value of `377` indicates that there have been no polling attempt failures.
 
 ## That's a wrap
 
-At this point you will have successfully setup your stratum-1 NTP time server and can begin to
-point all your servers and workstations to it in order to receive time updates. This is where
+At this point, you will have successfully set up your stratum-1 NTP time server and can begin to
+point all your servers and workstations to it to receive time updates. This is where
 I would give one last `reboot test` and bounce the server to ensure that everything comes back
-up as expected. I always say it is not done unless it has been rebooted. So give it one more 
-reboot and double check that everything comes up right.
+up as expected. I always say it is not done unless it has been rebooted. So give it one more reboot and double-check that everything comes up correctly.
 
-All in all, I think that total cost for this NTP server project build was around $150-160, which
+All in all, I think that the total cost for this NTP server project build was around $150-160, which
 includes the extras that can be used with future projects. While the case and everything makes
-mention of a Raspberry Pi 3, I did reuse my existing Raspberry Pi 2 which does not include wifi
-and bluetooth. My existing Raspberry Pi 3 board is already in use with another build project
-which is why I did not use it and I did not think it worth buying a new one when this worked fine.
-The original Ultimate GPS HAT I bought did have a reported issue with the Raspberry Pi 3 but that
+mention of a Raspberry Pi 3, I did reuse my existing Raspberry Pi 2, which does not include wifi
+and Bluetooth. My existing Raspberry Pi 3 board is already in use with another build project
+which is why I did not use it, and I did not think it worth buying a new one when this worked fine.
+The original Ultimate GPS HAT I bought did have a reported issue with the Raspberry Pi 3, but that
 appears to have been resolved and a new revision of the board released.
 
-Overall I am quite happy with how this project turned out and the results have been extremely
-more stable than my original build. I expect this device to see a long lifetime of use as I do
-like to keep my timestamps accurate.
+Overall I am pretty happy with how this project turned out, and the results have been highly
+more stable than my original build. I expect this device to see a long lifetime of use as I keep my timestamps accurate.
 
 [1]: https://www.adafruit.com/ "Adafruit Industries"
 [2]: https://www.raspberrypi.org/software/ "Raspberry Pi Software"
