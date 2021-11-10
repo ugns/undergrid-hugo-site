@@ -26,6 +26,6 @@ of the policy and verifies either the MD5 or SHA1 checksum of the policy file if
 policy manager is currently being worked on to be able to provide as both a shareware and licensed
 versions. As it involves GPG key usage the license will be generated for the users GPG key.
 
-Those interest can feel free to check out [my key policy](https://undergrid.net/legal/gpg/) and
+Those interest can feel free to check out [my key policy](https://undergrid.net/legal/gpg) and
 watch as it evolves. Those wishing to potentially make use of the policy manager can also inquire
 further as there is no current targeted date for a general release.
