@@ -9,15 +9,18 @@ phases:
       - curl -L -o hugo.tar.gz $(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest |jq -r '.assets[] |select(.content_type | contains("application/gzip")) |select (.browser_download_url | contains("Linux-64bit")) | select(.browser_download_url | contains("extended") | not) | .browser_download_url')
       - tar xvfz hugo.tar.gz
       - ./hugo version
+
   pre_build:
     commands:
       - echo Installing source dependencies...
       - git submodule init
       - git submodule update
+
   build:
     commands:
       - echo Running Hugo...
       - ./hugo -v
+
 artifacts:
   files:
     - '**/*'
