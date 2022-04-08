@@ -4,7 +4,7 @@ type: post
 author: jtbouse
 date: 2022-04-07T23:24:25-04:00
 publishdate: 2022-04-07
-draft: true
+draft: false
 summary: |
     After over two decades in my IT career the one comment I have heard many times 
     over and over again from both colleagues and peers usually but not so much from
