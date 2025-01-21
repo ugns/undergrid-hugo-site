@@ -6,8 +6,8 @@ phases:
       python: latest
     commands:
       - echo Installing hugo...
-      - curl -L -o hugo.tar.gz $(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest |jq -r '.assets[] |select(.content_type | contains("application/gzip")) |select (.browser_download_url | contains("Linux-64bit")) | select(.browser_download_url | contains("extended") | not) | .browser_download_url')
-      - tar xvfz hugo.tar.gz
+      - curl -L -o hugo.tar.gz $(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest |jq -r '.assets[] |select(.content_type | contains("application/gzip")) |select (.browser_download_url | contains("Linux-64bit")) | select(.browser_download_url | contains("hugo_extended") | not) | .browser_download_url')
+      - tar xvfz hugo.tar.gz hugo
       - ./hugo version
 
   pre_build:
