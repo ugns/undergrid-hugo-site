@@ -19,7 +19,7 @@ phases:
   build:
     commands:
       - echo Running Hugo...
-      - ./hugo -v
+      - ./hugo --gc --enableGitInfo --minify
 
 artifacts:
   files:
