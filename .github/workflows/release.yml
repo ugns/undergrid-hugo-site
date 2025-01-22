@@ -1,0 +1,84 @@
+name: Deploy Hugo site
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+defaults:
+  run:
+    shell: bash
+  
+jobs:
+  build-hugo:
+    name: Generate Hugo site
+    runs-on: ubuntu-latest
+    needs: deploy-infra
+  
+    env:
+      HUGO_ENV: production
+      HUGO_CACHEDIR: /tmp/hugo_cache
+      CF_DIST_ID: E653QXT8NQ3YL
+      BUCKET: undergrid.services
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - run: npm ci
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.128.0'
+          extended: true
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.HUGO_CACHEDIR }}
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+      
+      - name: Hugo Build
+        run: hugo --gc --enableGitInfo --minify
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE }}
+          aws-region: us-east-1
+
+      - name: Assume IAM Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_TERRAFORM_DEPLOY_ROLE }}
+          role-chaining: true
+          aws-region: us-east-1
+
+      - name: Update Hugo Deployment
+        run: |
+          sed -i "s@CLOUDFRONT_DISTRIBUTION_ID@${{ env.CF_DIST_ID }}@g" config/production/deployment.yaml
+          sed -i "s@S3_BUCKET_URL@${{ env.BUCKET }}@g" config/production/deployment.yaml
+
+      - name: Hugo Deploy (dry-run)
+        if: github.event_name == 'pull_request'
+        run: hugo deploy --dryRun --target AWS
+
+      - name: Hugo Deploy
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: hugo deploy --maxDeletes -1 --target AWS --logLevel info

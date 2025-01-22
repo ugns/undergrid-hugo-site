@@ -1,0 +1,23 @@
+order:
+  - .jpg$
+  - .png$
+  - .gif$
+  - .webp$
+targets:
+  - name: AWS
+    URL: "S3_BUCKET_URL"
+    cloudFrontDistributionID: CLOUDFRONT_DISTRIBUTION_ID
+matchers:
+  - pattern: ^.+\.(js|css|md|otf|svg|ttf|txt)$
+    cacheControl: 'max-age=604800, no-transform, public'
+    gzip: true
+  - pattern: ^.+\.(bmp|gif|ico|jpeg|jpg|mp3|mp4|pdf|png|rss|tiff|woff|woff2)$
+    cacheControl: 'max-age=604800, no-transform, public'
+    gzip: false
+  - pattern: ^sitemap\.xml$
+    contentType: application/xml
+    cacheControl: "max-age=3600, no-transform, public"
+    gzip: true
+  - pattern: ^.+\.(html|xml|json)$
+    cacheControl: "max-age=3600, no-transform, public"
+    gzip: true
