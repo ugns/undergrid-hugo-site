@@ -38,8 +38,6 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - run: npm ci
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
