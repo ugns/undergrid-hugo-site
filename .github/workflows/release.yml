@@ -24,7 +24,7 @@ jobs:
       HUGO_ENV: production
       HUGO_CACHEDIR: /tmp/hugo_cache
       CF_DIST_ID: E653QXT8NQ3YL
-      BUCKET: undergrid.services
+      BUCKET: s3://undergrid.services?region=us-east-1
       
     steps:
       - name: Checkout
